@@ -4,7 +4,19 @@ import {BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import Dashboard from "./Dashboard";
 import axios from 'axios'
-import DreamwayHome from './DreamwayHome';
+import DashboardLayout from './Layouts/DashboardLayout';
+import GettingStarted from './GettingStarted.js'
+import AdventureGuide from './AdventureGuide';
+import ClassQuests from './ClassQuests';
+import TalentTrees from './TalentTrees';
+import CreatePost from './CreatePost';
+import ForumFeed from './ForumFeed';
+import Post from './Post';
+import EditComment from './EditComment';
+import EditPost from './EditPost';
+import ProfileSettings from './ProfileSettings';
+import ProfileSettingsEdit from './ProfileSettingsEdit';
+import PostActivity from './PostActivity';
 export default class App extends Component {
   constructor() {
     super(); 
@@ -52,19 +64,32 @@ export default class App extends Component {
   render() {
     return (
       <div className='app'>
+        
        <BrowserRouter>
+       <DashboardLayout/> 
        <Switch> 
        <Route exact path={"/"} 
        render={props => (
          <Home {...props} handleLogout={this.handleLogout} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} />
        )}
        />
-       <Route exact path={"/dashboard"} 
+       <Route exact path={"/welcome"} 
        render={props => (
          <Dashboard {...props} loggedInStatus={this.state.loggedInStatus} />
        )}
        />
-       <Route exact path={"/DreamwayHome"} component={DreamwayHome} />
+       <Route exact path={"/DruidIntel/GettingStarted"} component={GettingStarted} />
+       <Route exact path={"/DruidIntel/AdventureGuide"} component={AdventureGuide} />
+       <Route exact path={"/DruidIntel/ClassQuests"} component={ClassQuests} />
+       <Route exact path={"/DruidIntel/TalentTrees"} component={TalentTrees} />
+       <Route exact path={"/Forum/CreatePost"} component={CreatePost} />
+       <Route exact path={"/Forum/Feed"} component={ForumFeed} />
+       <Route exact path={"/Forum/Feed/Post/:postid"} component={Post} />
+       <Route exact path={"/Forum/Feed/Post/Edit/:postid"} component={EditPost} />
+       <Route exact path={"/Forum/Feed/Comment/Edit/:commentid"} component={EditComment} />
+       <Route exact path={"/Dashboard/ProfileSettings"} component={ProfileSettings} />
+       <Route exact path={"/Dashboard/ProfileSettings/Edit"} component={ProfileSettingsEdit} />
+       <Route exact path={"/Dashboard/PostActivity"} component={PostActivity} />
       </Switch> 
       </BrowserRouter>
       </div>

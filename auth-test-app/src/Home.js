@@ -3,6 +3,7 @@ import Registration from "./auth/Registration"
 import axios from 'axios';
 import Login from "./auth/Login";
 import DashboardLayout from "./Layouts/DashboardLayout";
+import './Home.css'  
 
 export default class Home extends Component {
     constructor(props) {
@@ -12,7 +13,7 @@ export default class Home extends Component {
     }
     handleSuccessfulAuth(data) {
         this.props.handleLogin(data); 
-        this.props.history.push("/dashboard")
+        this.props.history.push("/welcome")
     }
 
     handleLogoutClick() {
