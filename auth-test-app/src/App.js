@@ -35,6 +35,7 @@ export default class App extends Component {
         loggedInStatus: "LOGGED_IN", 
         user: response.data.user 
       })
+      console.log(response.data.user)
     } else if (!response.data.logged_in && this.state.loggedInStatus === "LOGGED_IN") {
       this.setState({
         loggedInStatus: "NOT_LOGGED_IN", 
@@ -66,7 +67,6 @@ export default class App extends Component {
       <div className='app'>
         
        <BrowserRouter>
-       <DashboardLayout/> 
        <Switch> 
        <Route exact path={"/"} 
        render={props => (
@@ -84,11 +84,16 @@ export default class App extends Component {
        <Route exact path={"/DruidIntel/TalentTrees"} component={TalentTrees} />
        <Route exact path={"/Forum/CreatePost"} component={CreatePost} />
        <Route exact path={"/Forum/Feed"} component={ForumFeed} />
-       <Route exact path={"/Forum/Feed/Post/:postid"} component={Post} />
+       <Route exact path={"/Forum/Feed/Post/:postid"} 
+       render={(routerProps) => <Post  {...routerProps} />} /> 
        <Route exact path={"/Forum/Feed/Post/Edit/:postid"} component={EditPost} />
        <Route exact path={"/Forum/Feed/Comment/Edit/:commentid"} component={EditComment} />
-       <Route exact path={"/Dashboard/ProfileSettings"} component={ProfileSettings} />
-       <Route exact path={"/Dashboard/ProfileSettings/Edit"} component={ProfileSettingsEdit} />
+       <Route exact path={"/Dashboard/ProfileSettings"} render={props => (
+         <ProfileSettings {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} />
+       )} /> 
+       <Route exact path={"/Dashboard/ProfileSettings/Edit"} render={props => (
+         <ProfileSettingsEdit {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} />
+       )} /> 
        <Route exact path={"/Dashboard/PostActivity"} component={PostActivity} />
       </Switch> 
       </BrowserRouter>

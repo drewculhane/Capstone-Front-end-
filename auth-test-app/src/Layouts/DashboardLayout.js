@@ -8,7 +8,7 @@ const DashboardLayout =(props) => {
         <a className="navbar-brand" >
           <img
             className="Logo"
-            src="https://res.cloudinary.com/dgmpgmo60/image/upload/v1597016965/Untitled_14_w0dmit.png"
+            src="https://res.cloudinary.com/dgmpgmo60/image/upload/v1597247907/Untitled_15_nw4jfi.png"
             alt="Ideate Logo"
           />
         </a>
