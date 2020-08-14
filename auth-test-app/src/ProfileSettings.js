@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DashboardLayout from './Layouts/DashboardLayout';
 import './ProfileSettings.css'
 
@@ -26,20 +26,20 @@ function ProfileSettings(props) {
                     <>
                 <h4> Email: {userInfo.email} </h4>
                 <h3> Avatar: </h3>
-                {userInfo.avatar === null ? 
+                {userInfo.avatar === null || "" ? 
                  <p> You haven't chosen an avatar yet.</p> : 
                  <img src={userInfo.avatar} /> 
                 }
-                {userInfo.nickname === null ? 
+                {userInfo.nickname === null || "" ? 
                 <p> You haven't chosen a nickname yet. Without a nickname you will be refered to as "Anonymous Druid" when you make posts.</p> :
                 <p> {userInfo.nickname} </p>}
-                {userInfo.server === null ? 
+                {userInfo.server === null || "" ? 
                 <p> You haven't chosen a server yet.</p> :
                 <p> {userInfo.server} </p>}
-                {userInfo.server_region === null ? 
+                {userInfo.server_region === null || "" ? 
                 <p> You haven't chosen a region yet.</p> :
                 <p> {userInfo.server_region} </p>}
-                {userInfo.spec === null ? 
+                {userInfo.spec === null || "" ? 
                 <p> You haven't indicated a spec yet.</p> :
                 <p> {userInfo.spec} </p>}
                 </>

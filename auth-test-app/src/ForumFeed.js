@@ -23,7 +23,11 @@ function ForumFeed(props) {
       const postArray = posts.map((post)=> (
           <>
     <div class="card text-white bg-dark mb-3" >
-    <div class="card-header">{post.updated_at}</div>
+    <div class="card-header"> 
+    <img src={post.user_avatar} />
+    {post.user_display} 
+    {post.updated_at}
+    </div>
     <div class="card-body">
     <Link to={"/Forum/Feed/Post/" + post.id} >
     <h5 class="card-title">{post.title}</h5>

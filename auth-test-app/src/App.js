@@ -82,7 +82,9 @@ export default class App extends Component {
        <Route exact path={"/DruidIntel/AdventureGuide"} component={AdventureGuide} />
        <Route exact path={"/DruidIntel/ClassQuests"} component={ClassQuests} />
        <Route exact path={"/DruidIntel/TalentTrees"} component={TalentTrees} />
-       <Route exact path={"/Forum/CreatePost"} component={CreatePost} />
+       <Route exact path={"/Forum/CreatePost"} render={props => (
+         <CreatePost {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} />
+       )} /> 
        <Route exact path={"/Forum/Feed"} component={ForumFeed} />
        <Route exact path={"/Forum/Feed/Post/:postid"} 
        render={(routerProps) => <Post  {...routerProps} />} /> 

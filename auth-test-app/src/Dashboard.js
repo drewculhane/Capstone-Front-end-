@@ -1,8 +1,10 @@
 import React from 'react'; 
 import './Dashboard.css'
+import DashboardLayout from './Layouts/DashboardLayout';
 const Dashboard = props => {
     return (
-        <> 
+        <>
+        <DashboardLayout />  
             <div className="Dashboard-Container">
                 <h1> Dashboard </h1>    
                 <h1> Status: {props.loggedInStatus} </h1>   
