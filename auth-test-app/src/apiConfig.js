@@ -1,8 +1,8 @@
 let dreamwayApi;
 
 const dreamwayApis = {
-//   production: "https://ancient-beyond-04234.herokuapp.com/users",
-  development: "http://localhost:3001",
+  production: "https://test-dreamway-1234.herokuapp.com/",
+  // development: "http://localhost:3001/",
 };
 
 // const ideasApis = {
@@ -10,14 +10,12 @@ const dreamwayApis = {
 //   development: "http://localhost:4000/ideas",
 // };
 
-// if (window.location.hostname === "localhost") {
-//   usersApi = usersApis.development;
-//   ideasApi = ideasApis.development;
-// } else {
-  dreamwayApi = dreamwayApis.development;
-//   ideasApi = ideasApis.production;
-// }
+  // if (window.location.hostname === "localhost") {
+  //    dreamwayApi = dreamwayApis.development;
+  //    } else {
+     dreamwayApi = dreamwayApis.production;
+//  }
 //can't do default exports when you need to export more than one
 //changed to named exports
 
-export { dreamwayApi };
+export { dreamwayApi }; 

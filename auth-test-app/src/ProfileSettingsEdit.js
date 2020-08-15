@@ -4,7 +4,7 @@ import './ProfileSettingsEdit.css'
 import AvatarChoice from './AvatarChoice';
 import axios from 'axios';
 import ProfEditForm from './ProfEditForm';
-
+import {dreamwayApi} from './apiConfig.js'
 function ProfileSettingsEdit(props) {
     const [spotlight, setSpotlight]=useState("")
     const [input, setInput]=useState({ nickname: "", server:"", server_region: "", spec: "", avatar: null })
@@ -35,7 +35,7 @@ function ProfileSettingsEdit(props) {
         }
         event.preventDefault(); 
         axios({
-            url: `http://localhost:3001/users/${userId}`,
+            url: `${dreamwayApi}users/${userId}`,
             method: "PUT",
             data: dataInputTwo
           })

@@ -3,6 +3,7 @@ import Registration from "./auth/Registration"
 import axios from 'axios';
 import Login from "./auth/Login";
 import DashboardLayout from "./Layouts/DashboardLayout";
+import {dreamwayApi} from './apiConfig.js'
 import './Home.css'  
 
 export default class Home extends Component {
@@ -17,7 +18,7 @@ export default class Home extends Component {
     }
 
     handleLogoutClick() {
-        axios.delete("http://localhost:3001/logout", { withCredentials: true }).then(response => {
+        axios.delete(`${dreamwayApi}logout`, { withCredentials: true }).then(response => {
         this.props.handleLogout()
         }).catch(error => {
             console.log("logout error", error);

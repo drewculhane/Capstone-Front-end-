@@ -4,6 +4,7 @@ import DashboardLayout from './Layouts/DashboardLayout';
 import './CreatePost.css'
 import PostCreateForm from './PostCreateForm';
 import axios from 'axios'
+import {dreamwayApi} from './apiConfig.js'
 function CreatePost(props) {
     const [input, setInput]=useState({title: "", content: ""})
     let displayChoice; 
@@ -39,7 +40,7 @@ function CreatePost(props) {
         }
         
         axios({
-            url: `http://localhost:3001/users/${props.user.id}/posts`,
+            url: `${dreamwayApi}users/${props.user.id}/posts`,
             method: "POST",
             data: dataInputTwo
           })
@@ -50,7 +51,7 @@ function CreatePost(props) {
     if (props.loggedInStatus === "NOT_LOGGED_IN") 
     postDataForm = (
         <div> 
-            <a href="/"> Please Log in to edit your dashboard. </a>
+            <a href="/"> Please Log in to make a post. </a>
         </div>
     ); 
       else {

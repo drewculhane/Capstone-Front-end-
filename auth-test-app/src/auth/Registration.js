@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
 import axios from 'axios';
+import {dreamwayApi} from '../apiConfig.js'
 export default class Registration extends Component {
     constructor(props) {
         super(props); 
@@ -23,7 +24,7 @@ export default class Registration extends Component {
             password, 
             password_confirmation 
         } = this.state; 
-        axios.post("http://localhost:3001/registrations", {
+        axios.post(`${dreamwayApi}registrations`, {
             user: {
                 email: email,
                 password: password, 

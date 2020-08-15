@@ -2,8 +2,8 @@ import React from 'react';
 import DashboardLayout from './Layouts/DashboardLayout';
 import './ForumFeed.css'
 import { Link } from 'react-router-dom'
-import { dreamwayApi } from './apiConfig';
 import { useState, useEffect } from 'react';
+import {dreamwayApi} from './apiConfig.js'
 import axios from 'axios'
 
 function ForumFeed(props) {
@@ -11,7 +11,7 @@ function ForumFeed(props) {
     useEffect(() => {
         const makeAPICall = async () => {
           try {
-            const response = await axios(`${dreamwayApi}/posts`);
+            const response = await axios(`${dreamwayApi}posts`);
             console.log("Ideas - useEffect - response", response);
             setPosts(response.data);
           } catch (err) {
@@ -26,7 +26,8 @@ function ForumFeed(props) {
     <div class="card-header"> 
     <img src={post.user_avatar} />
     {post.user_display} 
-    {post.updated_at}
+    <p>{post.updated_at.slice(0,10)}</p>
+    <p>{post.updated_at.slice(11,16)}</p>
     </div>
     <div class="card-body">
     <Link to={"/Forum/Feed/Post/" + post.id} >

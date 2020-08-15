@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
 import axios from 'axios';
+import {dreamwayApi} from '../apiConfig.js'
 export default class Login extends Component {
     constructor(props) {
         super(props); 
@@ -20,7 +21,7 @@ export default class Login extends Component {
             email, 
             password, 
         } = this.state; 
-        axios.post("http://localhost:3001/sessions", {
+        axios.post(`${dreamwayApi}sessions`, {
             user: {
                 email: email,
                 password: password, 

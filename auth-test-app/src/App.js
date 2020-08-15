@@ -17,6 +17,7 @@ import EditPost from './EditPost';
 import ProfileSettings from './ProfileSettings';
 import ProfileSettingsEdit from './ProfileSettingsEdit';
 import PostActivity from './PostActivity';
+import {dreamwayApi} from './apiConfig.js'
 export default class App extends Component {
   constructor() {
     super(); 
@@ -29,7 +30,7 @@ export default class App extends Component {
     this.handleLogout = this.handleLogout.bind(this)
   }
   checkLoginStatus() {
-    axios.get("http://localhost:3001/logged_in", { withCredentials: true }).then(response => {
+    axios.get(`${dreamwayApi}logged_in`, { withCredentials: true }).then(response => {
       if (response.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN") {
       this.setState({
         loggedInStatus: "LOGGED_IN", 
@@ -87,9 +88,9 @@ export default class App extends Component {
        )} /> 
        <Route exact path={"/Forum/Feed"} component={ForumFeed} />
        <Route exact path={"/Forum/Feed/Post/:postid"} 
-       render={(routerProps) => <Post  {...routerProps} />} /> 
-       <Route exact path={"/Forum/Feed/Post/Edit/:postid"} component={EditPost} />
-       <Route exact path={"/Forum/Feed/Comment/Edit/:commentid"} component={EditComment} />
+       render={(routerProps) => <Post  {...routerProps} user={this.state.user} loggedInStatus={this.state.loggedInStatus}/>} /> 
+       <Route exact path={"/Forum/Feed/Post/Edit/:postid"} render={(routerProps) => <EditPost  {...routerProps} user={this.state.user} loggedInStatus={this.state.loggedInStatus}/>} /> 
+       <Route exact path={"/Forum/Feed/Post/:postid/Comment/Edit/:commentid"} render={(routerProps) => <EditComment {...routerProps} user={this.state.user} loggedInStatus={this.state.loggedInStatus}/>} /> 
        <Route exact path={"/Dashboard/ProfileSettings"} render={props => (
          <ProfileSettings {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} />
        )} /> 
